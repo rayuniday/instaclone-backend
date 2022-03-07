@@ -1,4 +1,5 @@
-const { ApolloServer, gql } = require("apollo-server");
+import { ApolloServer, gql } from "apollo-server";
+import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
 
 const typeDefs = gql`
   type Query {
@@ -8,13 +9,14 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    hello: () => "bebe",
+    hello: () => "hiii",
   },
 };
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
 });
 
 server
